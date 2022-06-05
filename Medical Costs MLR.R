@@ -1,0 +1,17 @@
+df <- read.csv("C:\\Users\\Ben\\OneDrive\\Documents\\insurance.csv")
+
+str(df)
+colnames(df)[1] <- "age"
+
+df_reg <- lm(charges ~ ., data = df)
+
+summary(df_reg)
+
+df$bmi40 <-  ifelse(df$bmi >= 40, 1, 0)
+df$age2 <- df$age^2
+
+df_reg <- lm(charges ~ . + smoker*sex,, data = df)
+
+summary(df_reg)
+
+
